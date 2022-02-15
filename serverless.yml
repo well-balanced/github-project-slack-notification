@@ -1,0 +1,46 @@
+# NOTE: update this with your service name
+service: github-project-slack-notification
+
+# Create an optimized package for our functions
+package:
+  individually: true
+
+plugins:
+  - serverless-dotenv-plugin # Load .env as environment variables
+  - serverless-plugin-typescript
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-northeast-2
+  # To load environment variables externally
+  # rename env.example to .env and uncomment
+  # the following line. Also, make sure to not
+  # commit your .env.
+  #
+  #environment:
+  #  SAMPLE_ENV_VAR: ${env:SAMPLE_ENV_VAR}
+
+functions:
+  hello:
+    handler: handler.eventHook
+    events:
+      - http:
+          path: hook
+          method: post
+          cors: true
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
