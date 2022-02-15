@@ -16,7 +16,7 @@ export const eventHook: APIGatewayProxyHandler = async (event) => {
     if (e instanceof UnsupportedEventException) {
       return { statusCode: 400, body: 'unsupported event' }
     }
-    console.error({ payload, message: e.message })
+    console.log({ payload, message: e.message })
     return { statusCode: 500, body: e.message }
   }
 

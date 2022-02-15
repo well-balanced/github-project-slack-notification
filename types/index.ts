@@ -13,7 +13,7 @@ export enum IssueAction {
   Assigned = 'assigned',
 }
 
-interface ProjectCard {
+export interface ProjectCard {
   url: string
   project_url: string
   column_url: string
@@ -23,9 +23,10 @@ interface ProjectCard {
   note: string
   archived: boolean
   creator: User
+  content_url?: string
 }
 
-interface User {
+export interface User {
   login: string
   id: number
   node_id: string
@@ -34,7 +35,16 @@ interface User {
   type: 'User'
 }
 
-interface Issue {
+export interface Column {
+  url: string
+  project_url: string
+  card_url: string
+  id: number
+  node_id: string
+  name: string
+}
+
+export interface Issue {
   url: string
   repository_url: string
   labels_url: string
@@ -52,7 +62,7 @@ interface Issue {
   comments: number
 }
 
-interface Repository {
+export interface Repository {
   id: number
   node_id: string
   name: string
