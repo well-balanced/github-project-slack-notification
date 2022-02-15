@@ -1,10 +1,8 @@
 import { UnsupportedEventException } from 'exceptions'
-import { IssueAction, IssueEventHandler, IssueEventPayload } from 'types'
+import { IssueAction, IssueEventPayload } from 'types'
 import { issueOpenedEventehHandler } from './opened'
 
-export function getIssueEventHandler(
-  payload: IssueEventPayload,
-): IssueEventHandler {
+export function getIssueEventHandler(payload: IssueEventPayload) {
   switch (payload.action) {
     case IssueAction.Opened:
       return issueOpenedEventehHandler

@@ -1,11 +1,9 @@
 import { UnsupportedEventException } from 'exceptions'
-import { CardAction, CardEventHandler, CardEventPayload } from 'types'
+import { CardAction, CardEventPayload } from 'types'
 import { cardCreatedEventehHandler } from './created'
 import { cardMovedEventehHandler } from './moved'
 
-export function getCardEventHandler(
-  payload: CardEventPayload,
-): CardEventHandler {
+export function getCardEventHandler(payload: CardEventPayload) {
   switch (payload.action) {
     case CardAction.Created:
       return cardCreatedEventehHandler

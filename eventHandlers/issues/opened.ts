@@ -1,6 +1,8 @@
-import { IssueEventHandler } from 'types'
+import { EH, IssueOpenedEventPayload } from 'types'
 import { sendWebhook } from 'utils'
 
-export const issueOpenedEventehHandler: IssueEventHandler = async (payload) => {
+export const issueOpenedEventehHandler: EH<IssueOpenedEventPayload> = async (
+  payload,
+) => {
   await sendWebhook('issueOpened')
 }

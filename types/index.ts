@@ -109,6 +109,4 @@ export interface IssueOpenedEventPayload extends IssueEventPayload {
   issue: Issue
 }
 
-export type EventHandler = (payload: BaseEventPayload) => Promise<void>
-export type CardEventHandler = (payload: CardEventPayload) => Promise<void>
-export type IssueEventHandler = (payload: IssueEventPayload) => Promise<void>
+export type EH<T extends BaseEventPayload> = (payload: T) => Promise<void>

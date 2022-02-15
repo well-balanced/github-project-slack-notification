@@ -1,4 +1,9 @@
-import { BaseEventPayload, CardEventPayload, IssueEventPayload } from 'types'
+import {
+  BaseEventPayload,
+  CardEventPayload,
+  EventPayloads,
+  IssueEventPayload,
+} from 'types'
 
 export function isIssueEvent(
   payload: BaseEventPayload,
@@ -12,9 +17,7 @@ export function isCardEvent(
   return 'project_card' in payload ? true : false
 }
 
-export function isValidGithubPayload(
-  payload: any,
-): payload is BaseEventPayload {
+export function isValidGithubPayload(payload: any): payload is EventPayloads {
   /**
    * reference
    * https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#webhook-payload-object-common-properties

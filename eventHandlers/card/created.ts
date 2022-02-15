@@ -1,6 +1,8 @@
-import { CardEventHandler } from 'types'
+import { EH, NewCardEventPayload } from 'types'
 import { sendWebhook } from 'utils'
 
-export const cardCreatedEventehHandler: CardEventHandler = async (payload) => {
+export const cardCreatedEventehHandler: EH<NewCardEventPayload> = async (
+  payload,
+) => {
   await sendWebhook('cardCreated')
 }
