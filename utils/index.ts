@@ -4,6 +4,7 @@ import { GITHUB_TOKEN, WEBHOOK_URL } from '../constants'
 export async function sendWebhook(
   message: string | Record<string, any>,
 ): Promise<void> {
+  if (!WEBHOOK_URL) throw new Error('webhook url is not speicified')
   await axios.post(WEBHOOK_URL, {
     text: message,
   })
@@ -22,14 +23,15 @@ export async function callGithubApi<T = any>({
   data,
   params,
 }: CallGithubAPIArgs<T>): Promise<AxiosResponse<T, any>> {
-  const response = await axios.request<T>({
+  return await axios.request<T>({
     url,
     params,
     data,
     method,
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-    },
+    ...(GITHUB_TOKEN && {
+      headers: {
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
+      },
+    }),
   })
-  return response
 }

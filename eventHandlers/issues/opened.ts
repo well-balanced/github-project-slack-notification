@@ -4,5 +4,5 @@ import { sendWebhook } from 'utils'
 export const issueOpenedEventehHandler: EH<IssueOpenedEventPayload> = async (
   payload,
 ) => {
-  await sendWebhook('issueOpened')
+  // await sendWebhook('issueOpened')
 }
