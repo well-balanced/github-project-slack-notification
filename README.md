@@ -6,6 +6,7 @@
 - [GitHub Organization의 어드민 권한을 가진 Personal token 발행](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 - [Organization Webhook 생성](https://docs.github.com/en/rest/reference/orgs#create-an-organization-webhook)
 - [AWS Access Key Id, Secret Access Key 발급](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_access-keys.html)
+- [Notion API Key 발급](https://developers.notion.com/docs/getting-started)
 
 ## Setup
 ```sh
@@ -15,5 +16,9 @@ $ touch .env # refer to .example.env
 
 ## Deploy
 ```sh
-$ sls deploy
+# development
+$ npm run deploy:dev
+
+# production
+$ npm run deploy:prod
 ```

@@ -1,17 +1,11 @@
 import { USER_NAME_MAP } from '../../constants'
-import { EH, IssueOpenedEventPayload } from 'types'
-import { getIssueUrl, sendWebhook, wait } from 'utils'
+import { EH, IssueEditedEventPayload } from 'types'
+import { getIssueUrl, sendWebhook } from 'utils'
 import { NotionTaskClient } from 'notion'
 
-export const issueOpenedEventHandler: EH<IssueOpenedEventPayload> = async (
+export const issueEditedEventHandler: EH<IssueEditedEventPayload> = async (
   payload,
 ) => {
-  /**
-   * waiting for the card converted event
-   * refer to src/eventHandlers/card/converted
-   */
-  await wait(3000)
-
   const username = USER_NAME_MAP[payload.sender.login]
   const { title, body, number: issueNumber } = payload.issue
   const issueUrl = getIssueUrl(issueNumber)
@@ -19,7 +13,7 @@ export const issueOpenedEventHandler: EH<IssueOpenedEventPayload> = async (
   /**
    * Send to slack
    */
-  const message = ` *[${username}]* 님이 *[${title}]* 이슈를 열었습니다. \n\n<${issueUrl}|*이슈 바로 보러가기*>`
+  const message = ` *[${username}]* 님이 *[${title}]* 이슈를 수정하였습니다. \n\n<${issueUrl}|*이슈 바로 보러가기*>`
   await sendWebhook(message)
 
   /**

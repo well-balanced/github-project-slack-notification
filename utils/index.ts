@@ -1,6 +1,10 @@
 import axios, { AxiosResponse, Method } from 'axios'
 import { GITHUB_TOKEN, WEBHOOK_URL } from '../constants'
 
+export function wait(duration: number) {
+  return new Promise((resolve) => setTimeout(resolve, duration))
+}
+
 export async function sendWebhook(
   message: string | Record<string, any>,
 ): Promise<void> {
@@ -34,4 +38,8 @@ export async function callGithubApi<T = any>({
       },
     }),
   })
+}
+
+export function getIssueUrl(issueNumber: number) {
+  return `https://github.com/sixshop/storefront/issues/${issueNumber.toString()}`
 }

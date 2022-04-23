@@ -60,6 +60,8 @@ export interface Issue {
   assignees: string[]
   milestone: string | null
   comments: number
+  body: string
+  number: number
 }
 
 export interface Repository {
@@ -78,6 +80,7 @@ export type EventPayloads =
   | CardMovedEventPayload
   | CardConvertedEventPayload
   | IssueOpenedEventPayload
+  | IssueEditedEventPayload
 
 export interface BaseEventPayload {
   action: IssueAction | CardAction
@@ -116,6 +119,11 @@ export interface CardConvertedEventPayload extends CardEventPayload {
 
 export interface IssueOpenedEventPayload extends IssueEventPayload {
   action: IssueAction.Opened
+  issue: Issue
+}
+
+export interface IssueEditedEventPayload extends IssueEventPayload {
+  action: IssueAction.Edited
   issue: Issue
 }
 

@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: github-project-slack-notification
+service: kanban-slack-notification
 
 # Create an optimized package for our functions
 package:
@@ -9,7 +9,7 @@ plugins:
   - serverless-dotenv-plugin # Load .env as environment variables
   - serverless-plugin-typescript
 
-frameworkVersion: "3"
+frameworkVersion: '3'
 
 provider:
   name: aws
