@@ -22,3 +22,4 @@ export const USER_NAME_MAP = Array.from({
 export const TASK_DATABASE_ID = '1b122a1d3b934f3c9ac260a5fa0da684'
 export const NOTION_API_KEY = process.env.NOTION_API_KEY
 export const NOTION_CLIENT_ID = process.env.NOTION_CLIENT_ID
+export const BASE_ISSUE_URL = process.env.BASE_ISSUE_URL

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, Method } from 'axios'
-import { GITHUB_TOKEN, WEBHOOK_URL } from '../constants'
+import { GITHUB_TOKEN, WEBHOOK_URL, BASE_ISSUE_URL } from '../constants'
 
 export function wait(duration: number) {
   return new Promise((resolve) => setTimeout(resolve, duration))
@@ -41,5 +41,5 @@ export async function callGithubApi<T = any>({
 }
 
 export function getIssueUrl(issueNumber: number) {
-  return `https://github.com/sixshop/storefront/issues/${issueNumber.toString()}`
+  return `${BASE_ISSUE_URL}/${issueNumber.toString()}`
 }
